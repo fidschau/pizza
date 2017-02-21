@@ -8,11 +8,35 @@ import java.util.ArrayList;
 
 public class Pizza {
 
-   private ArrayList<Cell> cells= new ArrayList<>();
-    private ArrayList<Slice> slices= new ArrayList<>();
+    private int rows, columns, minIngredient, maxSliceSize;
 
-    public Pizza(ArrayList<Cell> cells) {
-        this.cells = cells;
+   private ArrayList<Cell> cells= new ArrayList<>();
+   private ArrayList<Slice> slices= new ArrayList<>();
+
+
+    public Pizza(int [] pizzaDescription) {
+        rows=pizzaDescription[0];
+        columns=pizzaDescription[1];
+        minIngredient=pizzaDescription[2];
+        maxSliceSize =pizzaDescription[3];
+    }
+
+
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public int getMinIngredient() {
+        return minIngredient;
+    }
+
+    public int getMaxSliceSize() {
+        return maxSliceSize;
     }
 
     public Cell getCell(int row, int column){
@@ -20,6 +44,13 @@ public class Pizza {
         return  cells.get(cells.indexOf(new Cell(row,column)));
     }
 
+    public  void addCell(Cell cell){
+        if (cells.contains(cell)){
+            cells.remove(cell);
+        }
+
+        cells.add(cell);
+    }
 
     public ArrayList<Slice> getValidSlices(){
         ArrayList<Slice> validSlices= new ArrayList<>();
@@ -40,6 +71,9 @@ public class Pizza {
         return false;
     }
 
+    /**
+     * Used to get the submission string
+     */
     public String getSubmissionString(){
         ArrayList<Slice> validSlices=getValidSlices();
         StringBuilder submissionStringBuilder=new StringBuilder(validSlices.size());
