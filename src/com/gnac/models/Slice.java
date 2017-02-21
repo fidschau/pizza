@@ -10,20 +10,21 @@ import java.util.Comparator;
 
 public class Slice {
     private ArrayList<Cell> cells = new ArrayList<>();
-    private int maxCells,minTomatoes,minMushrooms;
+    private int maxCells, minIngredients;
 
     private boolean isValidSlice=false;
 
 
-    public Slice(int maxCells, int minTomatoes, int minMushrooms) {
+    public Slice(int maxCells, int minIngredients) {
         this.maxCells = maxCells;
-        this.minTomatoes = minTomatoes;
-        this.minMushrooms = minMushrooms;
+        this.minIngredients = minIngredients;
+
     }
 
     public boolean addCellToSlice(Cell cell){
         if (!cell.isInSlice()){
             cell.setInSlice(true);
+            if (cells.contains(cell)) cells.remove(cell);
             cells.add(cell);
 
             return true;
@@ -42,7 +43,7 @@ public class Slice {
             }
         }
 
-        return tomatoes>=minTomatoes&&mushrooms>=minMushrooms&&cells.size()<=maxCells;
+        return tomatoes>= minIngredients &&mushrooms>=minIngredients&&cells.size()<=maxCells;
     }
     public int numberOfSlicedCells(){
         return cells.size();

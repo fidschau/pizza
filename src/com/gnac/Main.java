@@ -7,7 +7,15 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        System.out.println("Booinux un");
+       // System.out.println("Booinux un");
+
+        int [] pizzaDescription = getPizzaDescriptionFromFile("small.in");
+        char [][] rawArray = getRawArrayFromFile("small.in");
+        Pizza pizza= createPizzaFromArray(pizzaDescription,rawArray);
+        pizza.cutSlices();
+        String submissionString = pizza.getSubmissionString();
+        createSubmissionFile("small",submissionString);
+
     }
 
 
@@ -17,7 +25,7 @@ public class Main {
      * @param rawArray
      * @return
      */
-    public Pizza createPizzaFromArray(int [] pizzaDescription,char [][] rawArray){
+    public static Pizza createPizzaFromArray(int [] pizzaDescription,char [][] rawArray){
         Pizza pizza;
         char tomato = 'T';
         if (pizzaDescription.length==4){
@@ -34,9 +42,38 @@ public class Main {
             return pizza;
         }
 
-
-
-
         return null;
+    }
+
+
+    /**
+     * To replace with Providence's method
+     * @param fileName
+     * @return
+     */
+    public static int[] getPizzaDescriptionFromFile(String fileName){
+        //Todo
+        int [] pizzaDescription = new int[4];
+        return pizzaDescription;
+    }
+
+    /**
+     * To replace with Providence's method
+     * @param fileName
+     * @return
+     */
+    public static char [][] getRawArrayFromFile(String fileName){
+        //Todo
+        char [][] rawArray = new char[14][45];
+        return rawArray;
+    }
+
+    /**
+     * Logic to be done by Bongani, the file created will be a text file with .out at the end. The string will be provided
+     * @param fileName
+     * @param submissionString
+     */
+    public static void createSubmissionFile(String fileName, String submissionString){
+        //Todo
     }
 }
